@@ -118,6 +118,7 @@ Event
 Examples
 ===========
 ```javascript
+//Connect
 var ftp = new EasyFTP();
 var config = {
     host: 'localhost',
@@ -126,6 +127,9 @@ var config = {
     password: 'password'
 };
 ftp.connect(config);
+
+
+
 
 /* 
 Ex) Directory structure
@@ -136,8 +140,9 @@ Ex) Directory structure
 /test/child1/child2/shell.sh
 */
 
-
 //Case1. files Upload
+var ftp = new EasyFTP();
+ftp.connect({...});
 ftp.upload("/test/test.txt", "/", function(err){
 	ftp.close();
 });
@@ -148,6 +153,8 @@ ftp.upload("/test/test.txt", "/", function(err){
 
 
 //Case2. child files Upload
+var ftp = new EasyFTP();
+ftp.connect({...});
 ftp.upload("/test/**", "/", function(err){
 	ftp.close();
 });
@@ -162,6 +169,8 @@ ftp.upload("/test/**", "/", function(err){
 
 
 //Case3. directory Upload
+var ftp = new EasyFTP();
+ftp.connect({...});
 ftp.upload("/test", "/", function(err){
 	ftp.close();	
 });
@@ -176,6 +185,8 @@ ftp.upload("/test", "/", function(err){
 
 
 //Case4. file download
+var ftp = new EasyFTP();
+ftp.connect({...});
 ftp.download("/test/test.txt", "/", function(err){
 	ftp.close();	
 });
@@ -186,6 +197,8 @@ ftp.download("/test/test.txt", "/", function(err){
 
 
 //Case5. direcotry download
+var ftp = new EasyFTP();
+ftp.connect({...});
 ftp.download("/test", "/", function(err){
 	ftp.close();	
 });
