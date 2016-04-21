@@ -1,0 +1,26 @@
+{
+  "name": "easy-ftp",
+  "version": "0.1.0",
+  "description": "easy ftp and sftp",
+  "main": "/lib/easy-ftp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ftp",
+    "sftp",
+    "ssh",
+    "upload",
+    "remote",
+    "download"
+  ],
+  "dependencies" : {
+	  "ftp" : "*",
+	  "ssh2" : "*",
+	  "xtend" : "*",
+	  "fs-extra" : "*",
+	  "easy-loop" : "*"
+  },
+  "author": "humy2833 <humy2833@gmail.com>",
+  "license": "MIT"
+}
