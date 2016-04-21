@@ -17,11 +17,12 @@ Install
 Usage
 ===========
 ```javascript
+var EasyFtp = require('easy-ftp');
 var ftp = new EasyFTP();
 var config = {
     host: '',
     port: 21,
-    user: '',
+    username: '',
     password: ''
 };
 
@@ -67,10 +68,11 @@ Methods
     * host - _string_	- server domain or ip **Default:** 'localhost'
     * port - _number_	- port (default : 21)
     * type - _string_	- ftp type. 'ftp' or 'sftp' (default : 'ftp')
-    * username(or user)		- _string_ - username for authentication **Default:** 'anonymous',
+    * username - _string_ - username for authentication **Default:** 'anonymous',
     * password - _string_	- password for authentication. **Default:** 'anonymous@'
     * privateKey - _mixed_	- sftp only. Buffer or string that contains a private key for either key-based or hostbased user authentication (OpenSSH format) **Default:** none
-    
+
+
 * **cd**(< _string_ >path, < _function_ >callback) - Changes the working directory. callback has 1 parameter: < Error >err.
 
 * **rm**(< _string_ >path, < _function_ >callback) - Deletes a file or directory(include child files) path on the server. callback has 1 parameter: < Error >err.
@@ -86,6 +88,7 @@ Methods
     * type - _string_ - file type. 'd' => directory,  'f' => file
     * date - _date_ - file last modified date
 
+
 * **pwd**(< _function_ >callback) - Retrieves the current working directory. callback has 2 parameters: < Error >err, < string >cwd.
 
 * **upload**(< _string_ >localPath, < _string_ >remotePath, < _function_ >callback) - Sends data to the server to be stored as remotePath. If direcotry path, include self directory and child files. If you want only child files, localPath is "/directory/**" or "/directory/****". callback has 1 parameter: < Error >err. 
@@ -93,6 +96,7 @@ Methods
     * file		- ex) upload("/test.txt", "/a/b/test.txt", ...)	=>  result : /a/b/test.txt
     * directory		- ex) upload("/directory", "/a/b", ...)		=>  result : /a/b/directory
     * only child files	- ex) upload("/directory/**", "/a/b", ...)	=>  result : /a/b/child files...
+
 
 * **download**(< _string_ >remotePath, < _function_ >callback) - Retrieves a file or directory at path from the server. If directory path, include child files. callback has 1 parameter: < Error >err. 
 
@@ -123,7 +127,7 @@ var ftp = new EasyFTP();
 var config = {
     host: 'localhost',
     port: 21,
-    user: 'id',
+    username: 'id',
     password: 'password'
 };
 ftp.connect(config);
@@ -143,7 +147,7 @@ Ex) Directory structure
 //Case1. files Upload
 var ftp = new EasyFTP();
 ftp.connect({...});
-ftp.upload("/test/test.txt", "/", function(err){
+ftp.upload("/test/test.txt", "/test.txt", function(err){
 	ftp.close();
 });
 /* result
