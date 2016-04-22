@@ -48,10 +48,17 @@ ftp.ls("/directory", function(err, list){});
 ftp.pwd(function(err, path){});	
 
 //파일 or 폴더 업로드(file or directory upload)
-ftp.upload("C:/test.txt", "/", function(err){});	
+ftp.upload("/test.txt", "/test.txt", function(err){});  	//result => /test.txt
+ftp.upload("/test.txt", "/test123.txt", function(err){});  //result => /test123.txt 
+ftp.upload("/test.txt", "/", function(err){});			//result => /test.txt
+ftp.upload("/directory", "/", function(err){});			//result => /directory
+	
 
 //파일 or 폴더 다운로드(file or directory download)
-ftp.download("/test.txt", "C:/", function(err){});	
+ftp.download("/test.txt", "/test.txt", function(err){});	//result => /test.txt
+ftp.download("/test.txt", "/test123.txt", function(err){});	//result => /test123.txt 
+ftp.download("/test.txt", "/", function(err){});		//result => /test.txt 
+ftp.download("/directory", "/", function(err){});		//result => /directory 
 
 //접속 종료(disconnect)
 ftp.close();	
@@ -147,6 +154,7 @@ Ex) Directory structure
 //Case1. files Upload
 var ftp = new EasyFTP();
 ftp.connect({...});
+//"/test/test.txt", "/test.txt"   or   "/test/test.txt", "/"
 ftp.upload("/test/test.txt", "/test.txt", function(err){
 	ftp.close();
 });
@@ -192,7 +200,8 @@ ftp.upload("/test", "/", function(err){
 //Case4. file download
 var ftp = new EasyFTP();
 ftp.connect({...});
-ftp.download("/test/test.txt", "/", function(err){
+//"/test/test.txt", "/test.txt"   or   "/test/test.txt", "/"
+ftp.download("/test/test.txt", "/test.txt", function(err){
 	ftp.close();	
 });
 /* result
