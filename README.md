@@ -47,18 +47,75 @@ ftp.ls("/directory", function(err, list){});
 //ftp 서버상의 현재 작업 경로 반환(return server path)
 ftp.pwd(function(err, path){});	
 
+
 //파일 or 폴더 업로드(file or directory upload)
 ftp.upload("/test.txt", "/test.txt", function(err){});  	//result => /test.txt
 ftp.upload("/test.txt", "/test123.txt", function(err){});  //result => /test123.txt 
 ftp.upload("/test.txt", "/", function(err){});			//result => /test.txt
 ftp.upload("/directory", "/", function(err){});			//result => /directory
-	
+
+//Array - Object({local:'localPath', remote:'remotePath'})
+var arr = [{local:"/test.txt", remote:"/test.txt"}, {local:"/test1.txt", remote:"/abcd/test2.txt"}, {local:"/directory", remote:"/"}];
+ftp.upload(arr, function(err){});	// 2 arguments;
+/* result
+/test.txt
+/abcd/test2.txt
+/directory
+*/
+
+//Array - String
+var arr = ["/test.txt", "/abcd/test2.txt", "/directory"];
+ftp.upload(arr, "/", function(err){});	// 3 arguments;
+/* result
+/test.txt
+/abcd/test2.txt
+/directory
+*/
+
+//Array - Object and String
+var arr = [{local:"/test.txt", remote:"/directory/test.txt"}, "/abcd/test2.txt", "/directory"];
+ftp.upload(arr, "/", function(err){});	// 3 arguments;
+/* result
+/directory/test.txt
+/abcd/test2.txt
+/directory
+*/
+
 
 //파일 or 폴더 다운로드(file or directory download)
 ftp.download("/test.txt", "/test.txt", function(err){});	//result => /test.txt
 ftp.download("/test.txt", "/test123.txt", function(err){});	//result => /test123.txt 
 ftp.download("/test.txt", "/", function(err){});		//result => /test.txt 
 ftp.download("/directory", "/", function(err){});		//result => /directory 
+
+//Array - Object({local:'localPath', remote:'remotePath'})
+var arr = [{remote:"/test.txt", local:"/test.txt"}, {remote:"/test1.txt", local:"/abcd/test2.txt"}, {remote:"/directory", local:"/"}];
+ftp.download(arr, function(err){});	// 2 arguments;
+/* result
+/test.txt
+/abcd/test2.txt
+/directory
+*/
+
+//Array - String
+var arr = ["/test.txt", "/abcd/test2.txt", "/directory"];
+ftp.download(arr, "/", function(err){});	// 3 arguments;
+/* result
+/test.txt
+/abcd/test2.txt
+/directory
+*/
+
+//Array - Object and String
+var arr = [{remote:"/test.txt", local:"/directory/test.txt"}, "/abcd/test2.txt", "/directory"];
+ftp.download(arr, "/", function(err){});	// 3 arguments;
+/* result
+/directory/test.txt
+/abcd/test2.txt
+/directory
+*/
+
+
 
 //접속 종료(disconnect)
 ftp.close();	
@@ -98,14 +155,21 @@ Methods
 
 * **pwd**(< _function_ >callback) - Retrieves the current working directory. callback has 2 parameters: < Error >err, < string >cwd.
 
-* **upload**(< _string_ >localPath, < _string_ >remotePath, < _function_ >callback) - Sends data to the server to be stored as remotePath. If direcotry path, include self directory and child files. If you want only child files, localPath is "/directory/**". callback has 1 parameter: < Error >err. 
+* **upload**(< _mixed_ >localPath, < _string_ >remotePath, < _function_ >callback) - Sends data to the server to be stored as remotePath. If direcotry path, include self directory and child files. If you want only child files, localPath is "/directory/**". callback has 1 parameter: < Error >err. 
     
     * file		- ex) upload("/test.txt", "/a/b/test.txt", ...)	=>  result : /a/b/test.txt
     * directory		- ex) upload("/directory", "/a/b", ...)		=>  result : /a/b/directory
     * only child files	- ex) upload("/directory/**", "/a/b", ...)	=>  result : /a/b/child files...
+    * array	- ex) upload(["/directory/**", "/test.txt"], "/a/b", ...)	=>  result : "/a/b/test.txt" and "/a/b/child files..."
 
 
-* **download**(< _string_ >remotePath, < _function_ >callback) - Retrieves a file or directory at path from the server. If directory path, include child files. callback has 1 parameter: < Error >err. 
+* **download**(< _mixed_ >remotePath, < _function_ >callback) - Retrieves a file or directory at path from the server. If directory path, include child files. callback has 1 parameter: < Error >err. 
+
+	* file		- ex) download("/test.txt", "/a/b/test.txt", ...)	=>  result : /a/b/test.txt
+    * directory		- ex) download("/directory", "/a/b", ...)		=>  result : /a/b/directory
+    * only child files	- ex) download("/directory/**", "/a/b", ...)	=>  result : /a/b/child files...
+    * array	- ex) download(["/directory/**", "/test.txt"], "/a/b", ...)	=>  result : "/a/b/test.txt" and "/a/b/child files..."
+    
 
 * **close**() - Closes the connection to the server after any/all enqueued commands have been executed.
 
@@ -195,9 +259,37 @@ ftp.upload("/test", "/", function(err){
 /test/child1/child2/shell.sh
 */
 
+//Case4. Multi file Upload
+//Array - Object({local:'localPath', remote:'remotePath'})
+var arr = [{local:"/test.txt", remote:"/test.txt"}, {local:"/test1.txt", remote:"/abcd/test2.txt"}, {local:"/directory", remote:"/"}];
+ftp.upload(arr, function(err){});	// 2 arguments;
+/* result
+/test.txt
+/abcd/test2.txt
+/directory
+*/
+
+//Array - String
+var arr = ["/test.txt", "/abcd/test2.txt", "/directory"];
+ftp.upload(arr, "/", function(err){});	// 3 arguments;
+/* result
+/test.txt
+/abcd/test2.txt
+/directory
+*/
+
+//Array - Object and String
+var arr = [{local:"/test.txt", remote:"/directory/test.txt"}, "/abcd/test2.txt", "/directory"];
+ftp.upload(arr, "/", function(err){});	// 3 arguments;
+/* result
+/directory/test.txt
+/abcd/test2.txt
+/directory
+*/
 
 
-//Case4. file download
+
+//Case5. file download
 var ftp = new EasyFTP();
 ftp.connect({...});
 //"/test/test.txt", "/test.txt"   or   "/test/test.txt", "/"
@@ -210,7 +302,7 @@ ftp.download("/test/test.txt", "/test.txt", function(err){
 
 
 
-//Case5. direcotry download
+//Case6. direcotry download
 var ftp = new EasyFTP();
 ftp.connect({...});
 ftp.download("/test", "/", function(err){
@@ -222,5 +314,35 @@ ftp.download("/test", "/", function(err){
 /test/child1/image.png
 /test/child1/child2
 /test/child1/child2/shell.sh
+*/
+
+
+
+//Case7. Multi file download
+//Array - Object({local:'localPath', remote:'remotePath'})
+var arr = [{remote:"/test.txt", local:"/test.txt"}, {remote:"/test1.txt", local:"/abcd/test2.txt"}, {remote:"/directory", local:"/"}];
+ftp.download(arr, function(err){});	// 2 arguments;
+/* result
+/test.txt
+/abcd/test2.txt
+/directory
+*/
+
+//Array - String
+var arr = ["/test.txt", "/abcd/test2.txt", "/directory"];
+ftp.download(arr, "/", function(err){});	// 3 arguments;
+/* result
+/test.txt
+/abcd/test2.txt
+/directory
+*/
+
+//Array - Object and String
+var arr = [{remote:"/test.txt", local:"/directory/test.txt"}, "/abcd/test2.txt", "/directory"];
+ftp.download(arr, "/", function(err){});	// 3 arguments;
+/* result
+/directory/test.txt
+/abcd/test2.txt
+/directory
 */
 ```
