@@ -262,7 +262,7 @@ ftp.upload("/test", "/", function(err){
 //Case4. Multi file Upload
 //Array - Object({local:'localPath', remote:'remotePath'})
 var arr = [{local:"/test.txt", remote:"/test.txt"}, {local:"/test1.txt", remote:"/abcd/test2.txt"}, {local:"/directory", remote:"/"}];
-ftp.upload(arr, function(err){});	// 2 arguments;
+ftp.upload(arr, function(err){ftp.close();});	// 2 arguments;
 /* result
 /test.txt
 /abcd/test2.txt
@@ -271,7 +271,7 @@ ftp.upload(arr, function(err){});	// 2 arguments;
 
 //Array - String
 var arr = ["/test.txt", "/abcd/test2.txt", "/directory"];
-ftp.upload(arr, "/", function(err){});	// 3 arguments;
+ftp.upload(arr, "/", function(err){ftp.close();});	// 3 arguments;
 /* result
 /test.txt
 /abcd/test2.txt
@@ -280,7 +280,7 @@ ftp.upload(arr, "/", function(err){});	// 3 arguments;
 
 //Array - Object and String
 var arr = [{local:"/test.txt", remote:"/directory/test.txt"}, "/abcd/test2.txt", "/directory"];
-ftp.upload(arr, "/", function(err){});	// 3 arguments;
+ftp.upload(arr, "/", function(err){ftp.close();});	// 3 arguments;
 /* result
 /directory/test.txt
 /abcd/test2.txt
@@ -321,7 +321,7 @@ ftp.download("/test", "/", function(err){
 //Case7. Multi file download
 //Array - Object({local:'localPath', remote:'remotePath'})
 var arr = [{remote:"/test.txt", local:"/test.txt"}, {remote:"/test1.txt", local:"/abcd/test2.txt"}, {remote:"/directory", local:"/"}];
-ftp.download(arr, function(err){});	// 2 arguments;
+ftp.download(arr, function(err){ftp.close();});	// 2 arguments;
 /* result
 /test.txt
 /abcd/test2.txt
@@ -330,7 +330,7 @@ ftp.download(arr, function(err){});	// 2 arguments;
 
 //Array - String
 var arr = ["/test.txt", "/abcd/test2.txt", "/directory"];
-ftp.download(arr, "/", function(err){});	// 3 arguments;
+ftp.download(arr, "/", function(err){ftp.close();});	// 3 arguments;
 /* result
 /test.txt
 /abcd/test2.txt
@@ -339,7 +339,7 @@ ftp.download(arr, "/", function(err){});	// 3 arguments;
 
 //Array - Object and String
 var arr = [{remote:"/test.txt", local:"/directory/test.txt"}, "/abcd/test2.txt", "/directory"];
-ftp.download(arr, "/", function(err){});	// 3 arguments;
+ftp.download(arr, "/", function(err){ftp.close();});	// 3 arguments;
 /* result
 /directory/test.txt
 /abcd/test2.txt
