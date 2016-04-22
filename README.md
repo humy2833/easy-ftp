@@ -91,7 +91,7 @@ Methods
 
 * **pwd**(< _function_ >callback) - Retrieves the current working directory. callback has 2 parameters: < Error >err, < string >cwd.
 
-* **upload**(< _string_ >localPath, < _string_ >remotePath, < _function_ >callback) - Sends data to the server to be stored as remotePath. If direcotry path, include self directory and child files. If you want only child files, localPath is "/directory/****". callback has 1 parameter: < Error >err. 
+* **upload**(< _string_ >localPath, < _string_ >remotePath, < _function_ >callback) - Sends data to the server to be stored as remotePath. If direcotry path, include self directory and child files. If you want only child files, localPath is "/directory/**". callback has 1 parameter: < Error >err. 
     
     * file		- ex) upload("/test.txt", "/a/b/test.txt", ...)	=>  result : /a/b/test.txt
     * directory		- ex) upload("/directory", "/a/b", ...)		=>  result : /a/b/directory
