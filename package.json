@@ -1,6 +1,6 @@
 {
   "name": "easy-ftp",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "easy ftp and sftp",
   "main": "lib/easy-ftp",
   "scripts": {
@@ -20,6 +20,13 @@
 	  "xtend" : "*",
 	  "fs-extra" : "*",
 	  "easy-loop" : "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/humy2833/easy-ftp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/humy2833/easy-ftp/issues"
   },
   "author": "humy2833 <humy2833@gmail.com>",
   "license": "MIT"
