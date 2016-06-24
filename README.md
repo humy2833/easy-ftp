@@ -163,7 +163,7 @@ Methods
     * array	- ex) upload(["/directory/**", "/test.txt"], "/a/b", ...)	=>  result : "/a/b/test.txt" and "/a/b/child files..."
 
 
-* **download**(< _mixed_ >remotePath, < _function_ >callback) - Retrieves a file or directory at path from the server. If directory path, include child files. callback has 1 parameter: < Error >err. 
+* **download**(< _mixed_ >remotePath, < _string_ >localPath, < _function_ >callback) - Retrieves a file or directory at path from the server. If directory path, include child files. callback has 1 parameter: < Error >err. 
 
 	* file		- ex) download("/test.txt", "/a/b/test.txt", ...)	=>  result : /a/b/test.txt
     * directory		- ex) download("/directory", "/a/b", ...)		=>  result : /a/b/directory
