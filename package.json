@@ -1,8 +1,8 @@
 {
   "name": "easy-ftp",
-  "version": "0.3.11",
+  "version": "0.3.12",
   "description": "easy ftp and sftp",
-  "main": "lib/easy-ftp",
+  "main": "lib/Easy-ftp",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
