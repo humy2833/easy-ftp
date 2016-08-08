@@ -1,6 +1,6 @@
 {
   "name": "easy-ftp",
-  "version": "0.3.14",
+  "version": "0.3.15",
   "description": "easy ftp and sftp",
   "main": "lib/Easy-ftp",
   "scripts": {
