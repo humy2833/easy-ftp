@@ -47,6 +47,9 @@ ftp.ls("/directory", function(err, list){});
 //ftp 서버상의 현재 작업 경로 반환(return server path)
 ftp.pwd(function(err, path){});	
 
+//서버에 파일이 존재하는지 여부 반환(boolean)
+ftp.exist("/filename", function(exist){});
+
 
 //파일 or 폴더 업로드(file or directory upload)
 ftp.upload("/test.txt", "/test.txt", function(err){});  	//result => /test.txt
@@ -154,6 +157,8 @@ Methods
 
 
 * **pwd**(< _function_ >callback) - Retrieves the current working directory. callback has 2 parameters: < Error >err, < string >cwd.
+
+* **exist**(< _function_ >callback) - whether a file or direcotry exists. callback has 1 parameters: < boolean >exist.
 
 * **upload**(< _mixed_ >localPath, < _string_ >remotePath, < _function_ >callback) - Sends data to the server to be stored as remotePath. If direcotry path, include self directory and child files. If you want only child files, localPath is "/directory/**". callback has 1 parameter: < Error >err. 
     
