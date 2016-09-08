@@ -1,6 +1,6 @@
 {
   "name": "easy-ftp",
-  "version": "0.3.20",
+  "version": "0.3.21",
   "description": "easy ftp and sftp",
   "main": "lib/Easy-ftp",
   "scripts": {
@@ -14,13 +14,12 @@
     "remote",
     "download"
   ],
-  "dependencies" : {
-	  "ftp" : "*",
-    "jsftp" : "*",
-	  "ssh2" : "*",
-	  "xtend" : "*",
-	  "fs-extra" : "*",
-	  "easy-loop" : "*"
+  "dependencies": {
+    "easy-loop": "^1.4.4",
+    "fs-extra": "*",
+    "ftp-simple": "^0.1.8",
+    "ssh2": "^0.5.1",
+    "xtend": "*"
   },
   "repository": {
     "type": "git",
