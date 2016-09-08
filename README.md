@@ -2,7 +2,7 @@ easy-ftp
 ===========
 - Easy control FTP or SFTP
 - 간단한 설정만으로 편리하게 FTP 혹은 SFTP 의 기능을 이용할 수 있습니다.
-- 이 모듈은 [ftp](https://www.npmjs.com/package/ftp) 와 [ssh2](https://www.npmjs.com/package/ssh2) 모듈을 참조하였습니다.
+- 이 모듈은 [ftp-simple](https://www.npmjs.com/package/ftp-simple) 와 [ssh2](https://www.npmjs.com/package/ssh2) 모듈을 참조하였습니다.
 
 
 
