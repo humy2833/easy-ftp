@@ -18,7 +18,7 @@ Usage
 ===========
 ```javascript
 var EasyFtp = require('easy-ftp');
-var ftp = new EasyFTP();
+var ftp = new EasyFtp();
 var config = {
     host: '',
     port: 21,

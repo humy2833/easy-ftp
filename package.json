@@ -1,8 +1,8 @@
 {
   "name": "easy-ftp",
-  "version": "0.3.26",
+  "version": "0.3.27",
   "description": "easy ftp and sftp",
-  "main": "lib/Easy-ftp",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,9 +17,8 @@
   "dependencies": {
     "easy-loop": "^1.4.4",
     "fs-extra": "*",
-    "ftp-simple": "^0.1.8",
-    "ssh2": "^0.5.4",
-    "xtend": "*"
+    "ftp-simple": "^0.1.14",
+    "ssh2": "^0.5.4"
   },
   "repository": {
     "type": "git",
