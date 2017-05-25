@@ -17,7 +17,7 @@
   "dependencies": {
     "easy-loop": "^1.4.4",
     "fs-extra": "*",
-    "ftp-simple": "^0.1.14",
+    "ftp-simple": "^0.1.15",
     "ssh2": "^0.5.4"
   },
   "repository": {

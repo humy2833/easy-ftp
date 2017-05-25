@@ -50,5 +50,5 @@ Temporary Items
 .jshintrc
 .project
 .tern-project
-node_modules
-test
+node_modules/
+test/
