@@ -191,7 +191,11 @@ Event
 
 * **upload**(< _string_ >uploadedRemotePath) - Emitted when file or directory uploaded.
 
+* **uploading**(< _object_ >data) - (sftp only) Emitted when file was transferred.
+
 * **download**(< _string_ >downloadedLocalPath) - Emitted when file or directory downloaded.
+
+* **downloading**(< _object_ >data) - (sftp only) Emitted when file was transferred.
 
 
 
