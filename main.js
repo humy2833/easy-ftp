@@ -6,8 +6,12 @@ module.exports = EasyFtp;
 
 function main(config, num){
   if(!num || typeof num !== 'number' || num < 0) num = 1;
-  if(num === 1) return new EasyFtp(config);
-  else if(config.type === 'ftp') return new ftp.Parallel(config, num);
-  else return new sftp(config, num);
+
+  if(num == 1) return new EasyFtp(config);
+  else
+  {
+    if(config.type === 'sftp')  return new sftp(config, num);
+    else  return new ftp.Parallel(config, num);
+  }
 }
 module.exports.Parallel = main;
