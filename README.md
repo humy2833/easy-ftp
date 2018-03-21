@@ -138,6 +138,7 @@ Methods
     * username - _string_ - username for authentication **Default:** 'anonymous',
     * password - _string_	- password for authentication. **Default:** 'anonymous@'
     * privateKey - _string_	- sftp only. string that contains a private key for either key-based or hostbased user authentication (OpenSSH format) **Default:** none
+    * path - _string_	- start path.
 
 
 * **cd**(< _string_ >path, < _function_ >callback) - Changes the working directory. callback has 1 parameter: < Error >err.

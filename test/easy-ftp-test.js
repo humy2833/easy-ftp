@@ -1,8 +1,8 @@
 var config1 = {
 	"host": "localhost",
 	"port": 21,
-	"user": "",
-	"pass": ""
+	"username": "",
+	"password": ""
 };;
 
 var loop = require('easy-loop');
