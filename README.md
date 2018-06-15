@@ -23,7 +23,8 @@ var config = {
     host: '',
     port: 21,
     username: '',
-    password: ''
+    password: '',
+    type : 'ftp'
 };
 
 //서버 접속(connect)
@@ -209,7 +210,8 @@ var config = {
     host: 'localhost',
     port: 21,
     username: 'id',
-    password: 'password'
+    password: 'password',
+    type : 'ftp'
 };
 ftp.connect(config);
 

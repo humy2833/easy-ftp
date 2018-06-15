@@ -2,7 +2,8 @@ var config1 = {
 	"host": "localhost",
 	"port": 21,
 	"username": "",
-	"password": ""
+    "password": "",
+    "type":"ftp"
 };;
 
 var loop = require('easy-loop');
