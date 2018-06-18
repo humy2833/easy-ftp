@@ -1,6 +1,6 @@
 {
   "name": "easy-ftp",
-  "version": "0.3.42",
+  "version": "0.3.43",
   "description": "easy ftp and sftp",
   "main": "main.js",
   "scripts": {
@@ -17,7 +17,7 @@
   "dependencies": {
     "easy-loop": "^1.6.0",
     "fs-extra": "*",
-    "ftp-simple": "^0.2.5",
+    "ftp-simple": "^0.2.6",
     "ssh2": "^0.6.1"
   },
   "repository": {
