@@ -9,8 +9,7 @@ var config1 = {
 var loop = require('easy-loop');
 var EasyFTP = require('../main');
 
-//var ftp1 = new EasyFTP(config1); //13967.730ms , 148819.925ms
-var ftp1 = EasyFTP.Parallel(config1, 3); //     56392.136ms, 49064.603ms
+var ftp1 = new EasyFTP(config1); //13967.730ms , 148819.925ms
 ftp1.on("open", function(client){
 	console.log("event open");
     console.time("time");
