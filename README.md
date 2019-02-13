@@ -4,12 +4,20 @@ easy-ftp
 - 간단한 설정만으로 편리하게 FTP 혹은 SFTP 의 기능을 이용할 수 있습니다.
 - 이 모듈은 [ftp-simple](https://www.npmjs.com/package/ftp-simple) 와 [ssh2](https://www.npmjs.com/package/ssh2) 모듈을 참조하였습니다.
 
+Caution
+===========
+If Node.js version is 8 or higher, use `0.4.0` or higher. Otherwise, use version `0.3.44`.
 
 
 Install
 =======
-
+If Node.js version is 8 or higher.
+    
     npm install easy-ftp
+
+Otherwise
+    
+    npm install easy-ftp@0.3.44
 
 
 
@@ -138,8 +146,10 @@ Methods
     * type - _string_	- ftp type. 'ftp' or 'sftp' (default : 'ftp')
     * username - _string_ - username for authentication **Default:** 'anonymous',
     * password - _string_	- password for authentication. **Default:** 'anonymous@'
-    * privateKey - _string_	- sftp only. string that contains a private key for either key-based or hostbased user authentication (OpenSSH format) **Default:** none
+    * privateKey - _string_	- (only sftp)string that contains a private key for either key-based or hostbased user authentication (OpenSSH format) **Default:** none
     * path - _string_	- start path.
+    * secure - _boolean_ - (only ftp) Explicit FTPS over TLS, default: false
+    * secureOptions - _object_ - (only ftp) Options for TLS, same as for `tls.connect()` in Node.js.
 
 
 * **cd**(< _string_ >path, < _function_ >callback) - Changes the working directory. callback has 1 parameter: < Error >err.
