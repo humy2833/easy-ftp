@@ -20,7 +20,7 @@
     "easy-loop": "^1.7.2",
     "fs-extra": "^7.0.1",
     "ftp-simple": "^0.3.2",
-    "ssh2": "^0.8.9"
+    "ssh2": "^1.4.0"
   },
   "repository": {
     "type": "git",
